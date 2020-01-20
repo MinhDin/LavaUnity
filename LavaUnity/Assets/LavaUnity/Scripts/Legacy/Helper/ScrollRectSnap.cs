@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class ScrollRectSnap : MonoBehaviour
 {
-
     float[] points;
     [Tooltip("how many screens or pages are there within the content (steps)")]
     public int screens = 1;

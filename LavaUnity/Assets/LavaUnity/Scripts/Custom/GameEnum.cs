@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum GameState
 {
-    LOADING,
+    LOADINGINGAME,
     ACTION,
+    SHOP,
 }

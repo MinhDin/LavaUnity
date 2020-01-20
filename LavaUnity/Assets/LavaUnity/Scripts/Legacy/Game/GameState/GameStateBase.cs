@@ -4,17 +4,19 @@ using UnityEngine;
 
 public abstract class GameStateBase
 {
-	protected Game game;
-
-	public GameStateBase(Game game)
+	public GameStateBase()
 	{
-		this.game = game;
 	}
 
 	public virtual void Update()
 	{
 		
 	}
+
+	//public virtual void FixUpdate()
+	//{
+
+	//}
 
 	public virtual void OnActive(GameState lastState)
 	{

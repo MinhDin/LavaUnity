@@ -1,5 +1,7 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
+=======
 --- !u!1 &3810368518211015761
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +74,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+>>>>>>> a66b9f12cb2dbf6b01e1c2ef86560aca26b6132a
 --- !u!1 &8759749493852162488
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,8 +104,12 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+  m_Children: []
+=======
   m_Children:
   - {fileID: 8425108877059575026}
+>>>>>>> a66b9f12cb2dbf6b01e1c2ef86560aca26b6132a
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -171,10 +171,13 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 430761597}
+<<<<<<< HEAD
+=======
     - target: {fileID: 202013061344109783, guid: aaeef3c9455914e84a6a0584e4dd4265, type: 3}
       propertyPath: UIMgr
       value: 
       objectReference: {fileID: 1699058196}
+>>>>>>> a66b9f12cb2dbf6b01e1c2ef86560aca26b6132a
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaeef3c9455914e84a6a0584e4dd4265, type: 3}
 --- !u!1 &430761595
@@ -426,6 +429,8 @@ PrefabInstance:
       objectReference: {fileID: 430761597}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fff18a4238b24a07939b29a53e96777, type: 3}
+<<<<<<< HEAD
+=======
 --- !u!114 &1699058196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1602688358280296894, guid: 0fff18a4238b24a07939b29a53e96777, type: 3}
@@ -437,3 +442,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14501efa2d3a94ecfadce3364754e90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> a66b9f12cb2dbf6b01e1c2ef86560aca26b6132a
