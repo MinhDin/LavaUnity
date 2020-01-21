@@ -33,18 +33,12 @@ public partial class TrackingManager : MonoBehaviour
 
     private void Awake()
     {
-        if (onAwake != null)
-        {
-            onAwake();
-        }
+        onAwake?.Invoke(); 
     }
 
     private void Start()
     {
-        if (onStart != null)
-        {
-            onStart();
-        }
+        onStart?.Invoke(); 
 #if UNITY_IOS
         OnApplicationPause(false);
 #endif
@@ -52,7 +46,7 @@ public partial class TrackingManager : MonoBehaviour
 
     private void Update()
     {
-        onUpdate();
+        onUpdate?.Invoke();
         if (WaitForServiceAvailableTask != null)
         {
             if (IsServiceAvailable())
@@ -65,34 +59,22 @@ public partial class TrackingManager : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus)
     {
-        if (onApplicationFocus != null)
-        {
-            onApplicationFocus(focusStatus);
-        }
+        onApplicationFocus?.Invoke(focusStatus);
     }
 
     public void OnApplicationPause(bool pauseStatus)
     {
-        if (onApplicationPause != null)
-        {
-            onApplicationPause(pauseStatus);
-        }
+        onApplicationPause?.Invoke(pauseStatus);
     }
 
     private void OnApplicationQuit()
     {
-        if (onApplicationQuit != null)
-        {
-            onApplicationQuit();
-        }
+        onApplicationQuit?.Invoke();
     }
 
     private void OnDestroy()
     {
-        if (onDestroy != null)
-        {
-            onDestroy();
-        }
+        onDestroy?.Invoke();
     }
 
 }

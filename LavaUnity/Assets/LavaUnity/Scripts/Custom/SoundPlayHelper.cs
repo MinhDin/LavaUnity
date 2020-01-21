@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SoundPlayHelper
 {
+    SoundManager soundMgr;
+    
     public void Init()
     {
+        soundMgr = Global.Instance.SoundMgr;
     }
 
     ~SoundPlayHelper()
     {
     }
+
+    
 }

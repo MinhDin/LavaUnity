@@ -6,7 +6,13 @@ using System.IO;
 
 public class ActionScene : SceneBase
 {
-
+    
+    protected override void _Init()
+    {
+        base._Init();
+      
+    }
+    
     public override void Show(SceneInfo info)
     {
         base.Show(info);
@@ -16,5 +22,5 @@ public class ActionScene : SceneBase
     {
         base.Close();
     }
- 
+
 }

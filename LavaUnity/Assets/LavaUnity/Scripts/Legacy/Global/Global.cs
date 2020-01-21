@@ -2,29 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
-public class Global : MonoBehaviour 
+public partial class Global : MonoBehaviour 
 {
-	public const string FirstIsland = "Leaffe";
-
 	public static Global Instance;
 	public Game CoreGame;
-	public TextureLibrary TexLib;
 	public GameEvents GameE;
-	public Camera MainCamera;
-	[Space]
+	public SinglePlayStatistics PlayStats;
+	public GameReference GameRef;	
 	public Factory GameFactory;	
 	public SaveGameManager SaveGameMgr;
+	public PlayDataManager PlayDataMgr;
 	public UIManager UIMgr;
+	public SoundManager SoundMgr;
+	public FXManager FXMgr;
+	public SoundConfig SoundConfig;
+	public Config GameConfig;
+	public FXConfig FXConfig;
+	[Space]
+	public SoundPlayHelper SoundPlayHlp;
+	[Space]
+	public GraphicRaycaster UIRootRaycaster;
+	public GraphicRaycaster SharedUIRaycaster;
 
 	private void Awake()
 	{
 		Instance = this;
-	}
 
-	//public StringIntSave FindIdInSave(List<StringIntSave>)
-	//public int GetSecondFromMarkedDay()
-	//{
-	//	return (int)System.DateTime.Now.Subtract(Global.MARKED_DAY).TotalSeconds;
-	//}
+		PlayStats = new SinglePlayStatistics();
+	}
 }

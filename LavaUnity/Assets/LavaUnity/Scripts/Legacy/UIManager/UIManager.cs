@@ -146,11 +146,7 @@ public class UIManager : MonoBehaviour
     void ShowNewScene(SceneInfo info)
     {
         SceneBase aScene;
-<<<<<<< HEAD:LavaUnity/Assets/LavaUnity/Scripts/Legacy/UIManager/UIManager.cs
         if (!dScene.TryGetValue(info.Type, out aScene))
-=======
-        if(!dScene.TryGetValue(info.Type, out aScene))
->>>>>>> a66b9f12cb2dbf6b01e1c2ef86560aca26b6132a:LavaUnity/Assets/LavaUnity/Scripts/Legacy/UIManager/UIManager.cs
         {
             Debug.LogError("Cant find scene type :" + info.Type.ToString());
             return;

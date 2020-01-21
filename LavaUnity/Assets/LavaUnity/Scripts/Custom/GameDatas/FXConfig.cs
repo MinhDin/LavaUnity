@@ -8,7 +8,6 @@ using UnityEditor;
 
 public partial class FXConfig : ScriptableObject
 {
-    
 #if UNITY_EDITOR
     [MenuItem("Lava/Scriptable/Data/FXConfig")]
     public static void CreateAsset()

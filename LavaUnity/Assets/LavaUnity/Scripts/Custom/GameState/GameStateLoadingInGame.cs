@@ -64,7 +64,7 @@ public class GameStateLoadingInGame : GameStateBase
 
         //yield return new WaitForSeconds(5);
         
-        for (int i = 1; i < Global.Instance.GameMgr.DelayInitialize.Length; ++i)
+        for (int i = 0; i < Global.Instance.GameMgr.DelayInitialize.Length; ++i)
         {
             Global.Instance.GameMgr.ActiveDelayInitialize(i);
         }

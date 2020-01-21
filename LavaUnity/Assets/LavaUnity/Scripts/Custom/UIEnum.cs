@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[Flags]
 public enum SceneType : uint
 {	
-	ACTION_PHASE = 1,
-	IAP = 2,		
-	SETTING = 4,
-	SHOP = 8,
-	NONE = 0,
-	ALL = uint.MaxValue,
+	ACTION = 1,
 }
 
 [Flags]
 public enum SceneSharedEle
 {
-	COIN = 1,
+	NONE = 0,
+	//special
+	KEEP = 1,
+	//normal
+	NORMALSTART = 128,
 }
 
 [Flags]
