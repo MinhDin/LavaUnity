@@ -18,7 +18,6 @@ public class SharedUIManager : MonoBehaviour
         }
     }
     UIManager uiMgr;
-    PlayerSaveData saveData;
     GameEvents gameE;
     Factory gameFactory;
 
@@ -36,8 +35,7 @@ public class SharedUIManager : MonoBehaviour
         if (!inited)
         {
             inited = true;
-
-            saveData = Global.Instance.SaveGameMgr.SavedPack.SaveData;
+            
             gameE = Global.Instance.GameE;
             gameFactory = Global.Instance.GameFactory;
             uiMgr = Global.Instance.UIMgr;
