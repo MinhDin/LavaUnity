@@ -57,10 +57,7 @@ public class Game : MonoBehaviour
     public void Update()
     {
         stateRunner.Update();
-        if(gameE.OnUpdate != null)
-        {
-            gameE.OnUpdate();
-        }
+        gameE.OnUpdate?.Invoke();
         
         DateTime now = DateTime.Now;
 
@@ -76,12 +73,6 @@ public class Game : MonoBehaviour
             gameE.OnSecondTick?.Invoke();
         }
     }
-
-    //public void FixedUpdate()
-    //{
-        //stateRunner.FixUpdate();
-    //}
-
     
     private void SwitchState(GameState newstate)
     {
@@ -141,18 +132,12 @@ public class Game : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (gameE.OnLateUpdate != null)
-        {
-            gameE.OnLateUpdate();
-        }
+        gameE.OnLateUpdate?.Invoke();
     }
 
     private void OnApplicationQuit()
     {
-        if (gameE.RequestSaveGame != null)
-        {
-            gameE.RequestSaveGame();
-        }
+        gameE.RequestSaveGame?.Invoke();
     }
 }
 

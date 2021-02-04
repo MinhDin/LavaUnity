@@ -29,9 +29,4 @@ public class DebugMenuUI : MonoBehaviour
     {
     }
 #endif
-
-    public void OnRestartGame()
-    {
-        Global.Instance.GameE.RequestRestartSong?.Invoke();
-    }
 }
