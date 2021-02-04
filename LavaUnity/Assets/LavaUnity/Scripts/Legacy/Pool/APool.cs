@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class APool<T> where T : IPoolable
 {
-    Stack<T> NotUsing;
+    Queue<T> NotUsing;
 
-    int size;
     int curSize;//optimize speed
     T prefab;
     Transform root;
@@ -14,11 +13,10 @@ public class APool<T> where T : IPoolable
     public APool(T prefab, int size, Transform root = null, bool hideInEditor = false)
     {
         this.root = root;
-        this.size = size;
         curSize = size;
         this.prefab = prefab;
 
-        NotUsing = new Stack<T>(size);
+        NotUsing = new Queue<T>(size);
 
         for (int i = 0; i < size; ++i)
         {
@@ -37,8 +35,10 @@ public class APool<T> where T : IPoolable
                 obj.GetGameObject().hideFlags = HideFlags.HideInHierarchy;
             }
 #endif
+            obj.IsInPool = true;
             obj.Init();
-            NotUsing.Push(obj);
+            obj.GetGameObject().SetActive(false);
+            NotUsing.Enqueue(obj);
         }
     }
 
@@ -47,7 +47,9 @@ public class APool<T> where T : IPoolable
         if (curSize > 0)
         {
             curSize--;
-            T obj = NotUsing.Pop();
+            T obj = NotUsing.Dequeue();
+
+            obj.IsInPool = false;
             obj.OnOutOfPool();
             return obj;
         }
@@ -63,10 +65,8 @@ public class APool<T> where T : IPoolable
                 obj = GameObject.Instantiate<GameObject>(prefab.GetGameObject(), root, false).GetComponent<T>();
             }
             obj.Init();
-            obj.OnReturnToPool();
 
-            size++;
-
+            //curSize++;
             obj.OnOutOfPool();
             return obj;
         }
@@ -74,16 +74,20 @@ public class APool<T> where T : IPoolable
 
     public void ReturnObject(T obj)
     {
-        curSize++;
-        obj.OnReturnToPool();
-
-        NotUsing.Push(obj);
+        if (!obj.IsInPool)
+        {
+            curSize++;
+            obj.OnReturnToPool();
+            obj.IsInPool = true;
+            NotUsing.Enqueue(obj);
+        }
     }
 }
 
 
 public interface IPoolable
 {
+    bool IsInPool { get; set; }
     void OnReturnToPool();
     void OnOutOfPool();
     void Init();

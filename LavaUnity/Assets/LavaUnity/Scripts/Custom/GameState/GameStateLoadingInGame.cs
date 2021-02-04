@@ -42,8 +42,8 @@ public class GameStateLoadingInGame : GameStateBase
         //static init
         //DG.Tweening.DOTween.Init();
         //create instance
-        Global.Instance.PlayStats = new SinglePlayStatistics();
-        Global.Instance.SaveGameMgr = new SaveGameManager();
+        Global.Instance.PlayStats = new PlayStatistics();
+        Global.Instance.SaveGameMgr = new SaveGameManager(false);
         Global.Instance.SoundMgr = new SoundManager();
         Global.Instance.GameFactory = new Factory();
         Global.Instance.FXMgr = new FXManager();
@@ -61,8 +61,6 @@ public class GameStateLoadingInGame : GameStateBase
         {
             yield return null;
         }
-
-        //yield return new WaitForSeconds(5);
         
         for (int i = 0; i < Global.Instance.GameMgr.DelayInitialize.Length; ++i)
         {
@@ -71,10 +69,7 @@ public class GameStateLoadingInGame : GameStateBase
 
         Global.Instance.CoreGame.PushState(GameState.ACTION);
 
-        if (Global.Instance.GameE.OnGameReady != null)
-        {
-            Global.Instance.GameE.OnGameReady();
-        }
+        Global.Instance.GameE.OnGameReady?.Invoke();
 
         if (Global.Instance.GameE.OnGameReadyOrder != null)
         {

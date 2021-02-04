@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using System.IO;
 
-[System.Serializable]
 public class PlayerSavePack
 {
     public PlayerSaveData SaveData;
@@ -36,9 +35,6 @@ public class PlayerSavePack
     }
 }
 
-
-
-[System.Serializable]
 public class PlayerSaveData
 {
     public long LastSaveTimeInTick;
@@ -63,7 +59,6 @@ public class PlayerSaveData
     }
 }
 
-[System.Serializable]
 public class UISaveData
 {
     public int Diamond;

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MonoPoolable : MonoBehaviour , IPoolable
 {
+    public bool IsInPool { get; set; }
 
-	public virtual void Init()
+    public virtual void Init()
 	{
 		
 	}

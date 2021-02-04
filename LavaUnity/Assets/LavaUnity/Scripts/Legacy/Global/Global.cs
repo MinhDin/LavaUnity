@@ -9,7 +9,7 @@ public partial class Global : MonoBehaviour
 	public static Global Instance;
 	public Game CoreGame;
 	public GameEvents GameE;
-	public SinglePlayStatistics PlayStats;
+	public PlayStatistics PlayStats;
 	public GameReference GameRef;	
 	public Factory GameFactory;	
 	public SaveGameManager SaveGameMgr;
@@ -30,6 +30,6 @@ public partial class Global : MonoBehaviour
 	{
 		Instance = this;
 
-		PlayStats = new SinglePlayStatistics();
+		PlayStats = new PlayStatistics();
 	}
 }

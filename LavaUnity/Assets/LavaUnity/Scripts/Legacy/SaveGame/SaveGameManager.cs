@@ -15,20 +15,12 @@ using UnityEditor;
 
 public class SaveGameManager
 {
-#if UNITY_EDITOR
-#if SAVE_BY_JSON
-    public static string saveGamePath = Application.dataPath + "/playerSave.json";
-#elif SAVE_BY_BINARY
-    public static string saveGamePath = Application.dataPath + "/playerSave.save";
-#endif
-#else
 #if SAVE_BY_JSON
     public static string saveGamePath = Application.persistentDataPath + "/playerSave.json";
 #elif SAVE_BY_BINARY
-    public static string saveGamePath = Application.persistentDataPath + "/playerSave.save";
+    public static string saveGamePath = Application.persistentDataPath + "/playerSave.saved";
 #endif
     
-#endif
     string saveUIPath;
     public PlayerSavePack SavedPack { get { return savedPack; } }
     PlayerSavePack savedPack;
@@ -69,11 +61,7 @@ public class SaveGameManager
             isDirty = true;
             return;
         }
-        //BinaryFormatter bf = new BinaryFormatter();
-        //Save Game
-        //FileStream file = File.Open(saveGamePath, FileMode.Create);
-        //Global.Instance.SavedPack.SaveData.TrashCanLastClaimTime 
-        //    = DateTime.Now.Ticks;
+
         savedPack.SaveData.LastSaveTimeInTick = DateTime.Now.Ticks;
 
 #if SAVE_BY_JSON
@@ -87,22 +75,14 @@ public class SaveGameManager
 #endif
         if (useThreadSave)
         {
-
-            //Thread parseThread = new Thread(
-            //    new ThreadStart(ThreadSave)
-            //);
-            //parseThread.Start();
             ThreadPool.QueueUserWorkItem(ThreadSave);
-            //Task.Run(ThreadSave);
         }
         else
         {
             ThreadSave(null);
         }
 
-        //bf.Serialize(file, Global.Instance.SavedPack);
 
-        //file.Close();
         isDirty = false;
         isRequestSave = false;
     }
@@ -111,10 +91,7 @@ public class SaveGameManager
     {
         if (File.Exists(saveGamePath))
         {
-            //BinaryFormatter bf = new BinaryFormatter();
-            //FileStream file = File.Open(saveGamePath,FileMode.OpenOrCreate);
-            //Global.Instance.SavedPack = (PlayerSavePack)bf.Deserialize(file);
-            //file.Close();
+
 #if SAVE_BY_JSON
             savedPack = JsonUtility.FromJson<PlayerSavePack>(File.ReadAllText(saveGamePath, System.Text.Encoding.ASCII));
 #elif SAVE_BY_BINARY
@@ -187,11 +164,11 @@ public class SaveGameManager
 
         isThreadSaving = false;
     }
+
 #if UNITY_EDITOR
     [MenuItem("Lava/Function/ClearSave")]
     static void DoSomething()
     {
-        //File.WriteAllText(saveGamePath, "", System.Text.Encoding.ASCII);
         File.Delete(saveGamePath);
         PlayerPrefs.DeleteAll();
     }

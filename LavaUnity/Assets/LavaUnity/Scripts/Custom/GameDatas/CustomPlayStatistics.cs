@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class SinglePlayStatistics
+public partial class PlayStatistics
 {
-    public Vector3 CrosshairPosition;
 }
